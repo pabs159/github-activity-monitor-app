@@ -1,0 +1,28 @@
+.container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.error-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $offwhite;
+  font-size: 1.5em;
+  height: calc(100vh - 100px);
+
+  .content {
+    width: 1200px;
+
+    a {
+      color: $primary;
+      transition: 0.5s ease-in-out;
+
+      &:hover {
+        color: $dark-primary;
+      }
+    }
+  }
+}

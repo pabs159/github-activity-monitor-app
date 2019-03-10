@@ -1,0 +1,46 @@
+.collapsible-faq-wrapper {
+  margin-bottom: 42px;
+  .faq-toggle-button {
+    width: 100%;
+    padding: 21px;
+    font-size: 3em;
+    color: $primary;
+    border: 2px solid $primary;
+    border-radius: 3px;
+    outline: none;
+    background-color: transparent;
+    transition: 0.5s ease-in-out;
+    svg {
+      margin-right: 15px;
+    }
+
+    &:hover {
+      background-color: $primary;
+      color: $dark-theme;
+      box-shadow: 3px 3px 7px rgba(1, 1, 1, 0.4);
+    }
+  }
+
+  .open {
+    background-color: $primary;
+    color: $dark-theme;
+    box-shadow: 3px 3px 7px rgba(1, 1, 1, 0.4);
+  }
+
+  .closed {
+    background-color: transparent;
+    color: $primary;
+  }
+
+  .collapsible-faq-content {
+    overflow: hidden;
+    .collapsible-faq-content-inner {
+      p {
+        margin-top: 21px;
+        margin-bottom: 21px;
+        font-size: 2em;
+        color: $offwhite;
+      }
+    }
+  }
+}

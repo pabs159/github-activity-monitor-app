@@ -1,0 +1,22 @@
+@mixin base-btn {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.5em;
+  margin-top: 21px;
+  margin-bottom: 21px;
+  font-family: $heading-font;
+  transition: 0.5s ease-in-out;
+
+  color: $primary;
+  border: $primary solid 1px;
+
+  &:hover {
+    background-color: $primary;
+    color: white;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.21);
+  }
+}

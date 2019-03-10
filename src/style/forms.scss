@@ -1,0 +1,26 @@
+.form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 21px;
+
+  .form-group {
+    display: flex;
+    align-items: center;
+
+    .icon-wrapper {
+      font-size: 1.5em;
+      color: $primary;
+      margin-right: 20px;
+    }
+
+    .full-width-element {
+      width: 100%;
+      font-size: 1.5em;
+      color: $dark-theme;
+      height: 42px;
+      outline: none;
+      border: 2px solid transparent;
+      border-bottom: 2px solid $primary;
+    }
+  }
+}

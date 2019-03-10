@@ -1,0 +1,99 @@
+.course-list-wrapper {
+  width: 1200px;
+
+  .course-list-item {
+    display: flex;
+    align-items: center;
+    margin: 50px 0px;
+
+    .thumbnail {
+      margin-right: 42px;
+      position: relative;
+      cursor: pointer;
+      border: 5px solid $primary;
+      border-radius: 100%;
+      -webkit-filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.7));
+      filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.7));
+      height: 150px;
+      width: 150px;
+      transition: 0.5s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .course-background {
+        border-radius: 100%;
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        transition: 0.5s ease-in-out;
+      }
+
+      .course-icon {
+        border-radius: 0%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75px;
+        height: 75px;
+        object-fit: cover;
+        margin-top: 25%;
+        margin-left: 25%;
+      }
+    }
+
+    .content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      .left-column {
+        display: flex;
+        flex-direction: column;
+        .title {
+          font-size: 2.5em;
+        }
+
+        .description {
+          font-size: 1.5em;
+          color: $offwhite;
+        }
+
+        .course-icons-wrapper {
+          margin-top: 15px;
+          i {
+            margin-right: 15px;
+            font-size: 3em;
+          }
+        }
+      }
+
+      .right-column {
+        color: $dark-theme;
+        font-weight: 900;
+        margin-left: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+        background-color: $offwhite;
+        border-radius: 3px;
+        transition: 0.5s ease-in-out;
+        -webkit-filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.7));
+        filter: drop-shadow(7px 7px 10px rgba(0, 0, 0, 0.7));
+
+        .month {
+          font-size: 2em;
+        }
+
+        .year {
+          font-size: 1.8em;
+          margin-top: 5px;
+          color: $dark-primary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.terminal-card {
+  padding: 15px;
+  background-color: $dark-theme;
+  border: 2px solid $dark-theme-dark;
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.4);
+
+  .xl-title {
+    color: $primary;
+    font-size: 4em;
+    margin-bottom: 42px;
+    font-family: "Telex", monospace;
+    color: white;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $primary;
+    padding: 5px 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.3em;
+    font-weight: 900;
+    font-family: "Overpass Mono", monospace;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 0;
+      width: 0;
+      left: 100%;
+      top: 0;
+      border: 20px solid transparent;
+      border-left: 20px solid $primary;
+    }
+  }
+}

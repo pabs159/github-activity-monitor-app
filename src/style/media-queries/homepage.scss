@@ -1,0 +1,150 @@
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  //CSS
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .corporate-layout-wrapper {
+    .corporate-hero-wrapper {
+      .terminal-card {
+        .xl-title {
+          font-size: 3.5em;
+        }
+      }
+    }
+  }
+
+  .language-logos {
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      width: 70px;
+      margin: 25px;
+    }
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .corporate-layout-wrapper {
+    .corporate-hero-wrapper {
+      .terminal-card {
+        .xl-title {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  .language-logos {
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      width: 70px;
+      margin: 25px;
+    }
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .corporate-layout-wrapper {
+    .corporate-hero-wrapper {
+      .terminal-card {
+        .xl-title {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  .language-logos {
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      width: 70px;
+      margin: 25px;
+    }
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .corporate-layout-wrapper {
+    .corporate-hero-wrapper {
+      grid-template-columns: 1fr;
+      padding: 15px;
+
+      .terminal-card {
+        .xl-title {
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  .language-logos {
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      width: 70px;
+      margin: 25px;
+    }
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .corporate-layout-wrapper {
+    .corporate-hero-wrapper {
+      grid-template-columns: 1fr;
+      padding: 15px;
+
+      .terminal-card {
+        .xl-title {
+          font-size: 2em;
+        }
+        height: 110px;
+      }
+    }
+  }
+
+  .language-logos {
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      width: 80px;
+      margin: 25px;
+    }
+  }
+}

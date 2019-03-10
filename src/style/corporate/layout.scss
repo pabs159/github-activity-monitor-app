@@ -1,0 +1,106 @@
+.corporate-layout-wrapper {
+  background-color: $dark-theme;
+
+  .corporate-navigation-wrapper {
+    padding: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .right-column {
+      a {
+        font-size: 3em;
+        color: white;
+        transition: 0.5s ease-in-out;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    .left-column {
+      display: flex;
+      align-items: center;
+
+      .nav-link-wrapper {
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 1.5em;
+
+        a {
+          .text {
+            margin-left: 7px;
+          }
+
+          color: $primary;
+          transition: 0.5s ease-in-out;
+
+          &:hover {
+            color: $offwhite;
+          }
+        }
+      }
+
+      .brand svg {
+        width: 150px;
+        margin-right: 25px;
+      }
+    }
+  }
+  .corporate-faqs-wrapper {
+    -webkit-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 200px;
+    align-items: center;
+    font-family: "Overpass Mono", monospace;
+
+    .title {
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      .text {
+        font-weight: 900;
+        font-size: 3em;
+        font-family: "Telex", sans-serif;
+        padding: 21px;
+        border: 3px solid $primary;
+        color: $primary;
+      }
+    }
+  }
+  .corporate-hero-wrapper {
+    -webkit-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+    height: 700px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 200px;
+    align-items: center;
+    font-family: "Overpass Mono", monospace;
+    padding-left: 42px;
+
+    .terminal-card {
+      height: 150px;
+    }
+
+    .subtitle {
+      font-size: 3em;
+      font-family: "Telex", sans-serif;
+      color: white;
+    }
+  }
+}

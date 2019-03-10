@@ -1,0 +1,18 @@
+.white-rounded-button {
+  @include base-btn();
+  color: white;
+  border: white solid 1px;
+
+  &:hover {
+    background-color: white;
+    color: $primary;
+  }
+}
+
+.primary-rounded-button {
+  @include base-btn();
+}
+
+.button-small {
+  width: 93%;
+}

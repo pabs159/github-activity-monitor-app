@@ -1,0 +1,12 @@
+.form-error {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.8em;
+  color: $warning;
+
+  svg {
+    margin-right: 3px;
+    margin-top: 1px;
+  }
+}

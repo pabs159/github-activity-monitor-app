@@ -1,0 +1,9 @@
+.blur {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+
+.remove-drop-shadow {
+  -webkit-filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0)) !important;
+  filter: drop-shadow(16px 16px 10px rgba(0, 0, 0, 0)) !important;
+}
