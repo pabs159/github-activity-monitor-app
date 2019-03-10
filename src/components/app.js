@@ -12,6 +12,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 
 import NoMatch from "../pages/errors/NoMatch";
 import DashboardNavigation from "./navigation/DashboardNavigation";
+import CorporateNavigation from "./navigation/CorporateNavigation";
 
 class App extends Component {
   constructor() {
@@ -119,7 +120,7 @@ class App extends Component {
         />
       );
     } else {
-      return null;
+      return <CorporateNavigation handleLogin={this.handleLogin} />;
     }
   }
 
