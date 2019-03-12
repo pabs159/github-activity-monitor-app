@@ -50,30 +50,6 @@ class CorporateNavigation extends Component {
               <NavLogo />
             </div>
           </Link>
-
-          <div className="nav-link-wrapper">
-            <NavLink
-              to="/teaching-methodology"
-              activeClassName="active-nav-link"
-            >
-              <FontAwesomeIcon icon="code-branch" />
-              <span className="text">Our Methodology</span>
-            </NavLink>
-          </div>
-
-          <div className="nav-link-wrapper">
-            <NavLink to="/faqs" activeClassName="active-nav-link">
-              <FontAwesomeIcon icon="comments" />
-              <span className="text">FAQs</span>
-            </NavLink>
-          </div>
-
-          <div className="nav-link-wrapper">
-            <NavLink to="/webinar-schedule" activeClassName="active-nav-link">
-              <FontAwesomeIcon icon="chalkboard-teacher" />
-              <span className="text">Webinar Schedule</span>
-            </NavLink>
-          </div>
         </div>
 
         <div className="right-column">

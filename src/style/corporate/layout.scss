@@ -2,12 +2,13 @@
   background-color: $dark-theme;
 
   .corporate-navigation-wrapper {
-    padding: 21px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100px;
 
     .right-column {
+      padding-right: 21px;
       a {
         font-size: 3em;
         color: white;
@@ -24,7 +25,7 @@
       align-items: center;
 
       .nav-link-wrapper {
-        margin-left: 15px;
+        margin-left: 5px;
         margin-right: 15px;
         font-size: 1.5em;
 
@@ -43,8 +44,8 @@
       }
 
       .brand svg {
+        padding-top: 50px;
         width: 150px;
-        margin-right: 25px;
       }
     }
   }
