@@ -4,11 +4,7 @@ import axios from "axios";
 
 import Icons from "../helpers/icons";
 import Home from "../pages/Home";
-
-import Register from "../pages/Register";
-
 import Dashboard from "../pages/dashboard/Dashboard";
-
 import NoMatch from "../pages/errors/NoMatch";
 import DashboardNavigation from "./navigation/DashboardNavigation";
 import CorporateNavigation from "./navigation/CorporateNavigation";
@@ -92,13 +88,12 @@ class App extends Component {
 
   routesForUsersNotLoggedIn() {
     return [
-      <Route exact key="home" path="/" component={Home} />,
       <Route
         exact
-        key="register"
-        path="/register"
+        key="home"
+        path="/"
         render={props => (
-          <Register
+          <Home
             {...props}
             handleSuccessfulRegistration={this.handleSuccessfulRegistration}
           />

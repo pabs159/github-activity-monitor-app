@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default class Register extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
 
@@ -29,7 +30,8 @@ export default class Register extends Component {
             email: this.state.email,
             password: this.state.password
           }
-        }
+        },
+        { withCredentials: true }
       )
       .then(response => {
         if (response.data.status === "created") {
@@ -99,3 +101,5 @@ export default class Register extends Component {
     );
   }
 }
+
+export default withRouter(Register);
