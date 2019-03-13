@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const MainLoader = props => {
+const MainLoader = () => {
   return (
     <div className="full-page-loader">
       <FontAwesomeIcon icon="spinner" spin />
