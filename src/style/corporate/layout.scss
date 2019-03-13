@@ -27,7 +27,7 @@
       .nav-link-wrapper {
         margin-left: 5px;
         margin-right: 42px;
-        font-size: 2em;
+        font-size: 1.5em;
 
         a {
           display: flex;
@@ -36,7 +36,7 @@
           flex-direction: column;
 
           svg {
-            font-size: 1.5em;
+            font-size: 2em;
           }
 
           .text {
@@ -56,61 +56,6 @@
         padding-top: 50px;
         width: 150px;
       }
-    }
-  }
-  .corporate-faqs-wrapper {
-    -webkit-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-    height: 150px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 200px;
-    align-items: center;
-    font-family: "Overpass Mono", monospace;
-
-    .title {
-      display: flex;
-      justify-content: center;
-      width: 100vw;
-      .text {
-        font-weight: 900;
-        font-size: 3em;
-        font-family: "Telex", sans-serif;
-        padding: 21px;
-        border: 3px solid $primary;
-        color: $primary;
-      }
-    }
-  }
-  .corporate-hero-wrapper {
-    -webkit-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-    height: 700px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 200px;
-    align-items: center;
-    font-family: "Overpass Mono", monospace;
-    padding-left: 42px;
-
-    .terminal-card {
-      height: 150px;
-    }
-
-    .subtitle {
-      font-size: 3em;
-      font-family: "Telex", sans-serif;
-      color: white;
     }
   }
 }
