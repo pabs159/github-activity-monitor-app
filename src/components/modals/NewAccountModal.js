@@ -84,7 +84,7 @@ export default class NewAccountModal extends Component {
             <input
               className="full-width-element"
               type="text"
-              name="email"
+              name="username"
               placeholder="Github username"
               value={this.state.username}
               onChange={this.handleChange}
