@@ -50,15 +50,15 @@ class DashboardNavigation extends Component {
 
           <div className="nav-link-wrapper">
             <NavLink to="/courses" activeClassName="active-nav-link">
-              <FontAwesomeIcon icon="caret-square-right" />
-              <span className="text">Courses</span>
+              <FontAwesomeIcon icon="plus-square" />
+              <div className="text">Track New User</div>
             </NavLink>
           </div>
 
           <div className="nav-link-wrapper">
             <NavLink to="/webinars" activeClassName="active-nav-link">
               <FontAwesomeIcon icon="chalkboard-teacher" />
-              <span className="text">Webinars</span>
+              <div className="text">Track New User</div>
             </NavLink>
           </div>
         </div>

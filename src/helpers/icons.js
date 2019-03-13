@@ -13,7 +13,8 @@ import {
   faExclamationCircle,
   faSignOutAlt,
   faCaretSquareRight,
-  faCalendarAlt
+  faCalendarAlt,
+  faPlusSquare
 } from "@fortawesome/free-solid-svg-icons";
 
 const Icons = () => {
@@ -31,7 +32,8 @@ const Icons = () => {
     faExclamationCircle,
     faSignOutAlt,
     faCaretSquareRight,
-    faCalendarAlt
+    faCalendarAlt,
+    faPlusSquare
   );
 };
 
