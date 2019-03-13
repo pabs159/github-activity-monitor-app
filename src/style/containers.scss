@@ -5,6 +5,23 @@
   justify-content: center;
 }
 
+.homepage-container {
+  @include inset-shadow();
+  background-color: $offwhite;
+
+  display: flex;
+  justify-content: center;
+
+  .content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+  }
+}
+
 .error-page-container {
   display: flex;
   justify-content: center;

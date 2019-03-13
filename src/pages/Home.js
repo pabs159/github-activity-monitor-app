@@ -1,13 +1,17 @@
 import React from "react";
 
 import MasterLayout from "../components/layouts/MasterLayout";
+import HomepageImage from "../components/svgs/HomepageImage";
 
 const Home = () => {
   return (
     <MasterLayout>
-      <div className="error-page-container">
+      <div className="homepage-container">
         <div className="content">
-          <h2>home!!!</h2>
+          <div className="left-column">Left column home</div>
+          <div className="right-column">
+            <HomepageImage />
+          </div>
         </div>
       </div>
     </MasterLayout>

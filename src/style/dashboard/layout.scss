@@ -1,6 +1,4 @@
 .dashboard-wrapper {
-  -webkit-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0px 7px 11px -4px rgba(0, 0, 0, 0.75);
+  @include inset-shadow();
   background-color: $offwhite;
 }
