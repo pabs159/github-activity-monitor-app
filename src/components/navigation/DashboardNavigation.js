@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
 import NavLogo from "../svgs/NavLogo";
+import NewAccountModal from "../modals/NewAccountModal";
 
 class DashboardNavigation extends Component {
   constructor(props) {
@@ -15,10 +16,30 @@ class DashboardNavigation extends Component {
     };
 
     this.handleLogoutLinkClick = this.handleLogoutLinkClick.bind(this);
+    this.handleSuccessfulAccountAddition = this.handleSuccessfulAccountAddition.bind(
+      this
+    );
+    this.handleModalClose = this.handleModalClose.bind(this);
+  }
+
+  handleModalClose = () => {
+    this.setState({
+      modalIsOpen: false
+    });
+  };
+
+  handleSuccessfulAccountAddition(accountAdded) {
+    console.log("handleSuccessfulAccountAddition", accountAdded);
   }
 
   handleLogoutLinkClick = () => {
     this.signOut();
+  };
+
+  handleNewAccountClick = () => {
+    this.setState({
+      modalIsOpen: true
+    });
   };
 
   signOut(event) {
@@ -41,6 +62,12 @@ class DashboardNavigation extends Component {
   render() {
     return (
       <div className="corporate-navigation-wrapper">
+        <NewAccountModal
+          modalIsOpen={this.state.modalIsOpen}
+          handleModalClose={this.handleModalClose}
+          handleSuccessfulAccountAddition={this.handleSuccessfulAccountAddition}
+        />
+
         <div className="left-column">
           <Link to="/">
             <div className="brand">
@@ -49,10 +76,10 @@ class DashboardNavigation extends Component {
           </Link>
 
           <div className="nav-link-wrapper">
-            <NavLink to="/courses" activeClassName="active-nav-link">
+            <a onClick={this.handleNewAccountClick}>
               <FontAwesomeIcon icon="plus-square" />
               <div className="text">Track New User</div>
-            </NavLink>
+            </a>
           </div>
 
           <div className="nav-link-wrapper">
