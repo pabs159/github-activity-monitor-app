@@ -94,7 +94,7 @@ class Register extends Component {
 
         <div className="login-btn-wrapper">
           <button className="primary-rounded-button button-small" type="submit">
-            Register
+            Sign up for a free account
           </button>
         </div>
       </form>

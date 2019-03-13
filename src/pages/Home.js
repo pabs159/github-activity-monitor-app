@@ -31,6 +31,7 @@ export default class Home extends Component {
               <div id="graph" />
             </div>
             <div className="right-column">
+              <div className="title">Start tracking Github activity</div>
               <Register
                 handleSuccessfulRegistration={this.handleSuccessfulRegistration}
               />

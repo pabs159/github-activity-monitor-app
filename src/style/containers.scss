@@ -21,6 +21,38 @@
     grid-gap: 100px;
 
     .right-column {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .title {
+        font-size: 4em;
+        margin-bottom: 21px;
+        color: $dark-theme;
+        font-weight: 900;
+        font-family: "Overpass Mono", monospace;
+        text-align: center;
+      }
+
+      .form-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .form-group {
+          width: 100%;
+          margin: 12px 0px;
+        }
+
+        .button-small {
+          padding: 15px;
+          font-size: 1.5em;
+          width: unset;
+        }
+      }
     }
   }
 }
