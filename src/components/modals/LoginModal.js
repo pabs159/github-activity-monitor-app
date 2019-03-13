@@ -52,6 +52,7 @@ export default class LoginModal extends Component {
       )
       .then(response => {
         if (response.data.logged_in) {
+          console.log("response data", response.data);
           this.props.handleSuccessfulAuth(response.data);
         } else {
           this.setState({

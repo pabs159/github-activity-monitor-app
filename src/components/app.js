@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Icons from "../helpers/icons";
 import Home from "../pages/Home";
@@ -13,6 +12,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import NoMatch from "../pages/errors/NoMatch";
 import DashboardNavigation from "./navigation/DashboardNavigation";
 import CorporateNavigation from "./navigation/CorporateNavigation";
+import MainLoader from "./loaders/MainLoader";
 
 class App extends Component {
   constructor() {
@@ -126,11 +126,7 @@ class App extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return (
-        <div className="full-page-loader">
-          <FontAwesomeIcon icon="spinner" spin />
-        </div>
-      );
+      return <MainLoader />;
     }
 
     return (
