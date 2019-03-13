@@ -19,6 +19,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 100px;
+
+    .right-column {
+      svg {
+        path {
+          fill: $primary;
+          stroke: $dark-primary;
+          stroke-width: 3px;
+        }
+      }
+    }
   }
 }
 
