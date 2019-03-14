@@ -54,6 +54,8 @@ export default class NewAccountModal extends Component {
           error: ""
         });
 
+        console.log("respone in modal", response);
+
         this.props.handleSuccessfulAccountAddition(response.data.account);
       })
       .catch(error => {
