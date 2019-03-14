@@ -30,8 +30,6 @@ class DashboardNavigation extends Component {
 
   handleSuccessfulAccountAddition(accountAdded) {
     // TODO
-    // Pass data to the parent component and add accounts
-    // Then have parent call the list of accounts when user is logged in and
     // render them in the dashboard
     // console.log("handleSuccessfulAccountAddition", accountAdded);
     this.props.handleAccountAddition(accountAdded);

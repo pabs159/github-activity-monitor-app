@@ -136,7 +136,6 @@ class App extends Component {
         withCredentials: true
       })
       .then(response => {
-        console.log("get accounts", response);
         this.setState({
           accountsFollowed: response.data.accounts,
           isLoading: false

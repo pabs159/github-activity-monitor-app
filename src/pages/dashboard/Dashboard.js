@@ -10,9 +10,16 @@ export default class Dashboard extends Component {
   }
 
   render() {
+    const accountList = this.props.accountsFollowed.map(account => {
+      return <div>{account.username}</div>;
+    });
+
     return (
       <div className="dashboard-wrapper">
-        <div className="container">Dashboard goes here...</div>
+        {this.props.accountsFollowed &&
+        this.props.accountsFollowed.length > 0 ? (
+          <div className="container">{accountList}</div>
+        ) : null}
       </div>
     );
   }
