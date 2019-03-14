@@ -54,7 +54,8 @@ export default class NewAccountModal extends Component {
       .catch(error => {
         console.log("in handle submit error for new account", error);
         this.setState({
-          error: "There was an error adding that account."
+          error:
+            "There was an error adding that account. Are you sure you haven't already added that username?"
         });
       });
 

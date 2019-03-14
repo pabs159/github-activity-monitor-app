@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
       isLoading: true,
       loggedInStatus: "NOT_LOGGED_IN",
-      user: {}
+      user: {},
+      accountsFollowed: []
     };
 
     Icons();
@@ -27,6 +28,11 @@ class App extends Component {
     this.handleSuccessfulRegistration = this.handleSuccessfulRegistration.bind(
       this
     );
+    this.handleAccountAddition = this.handleAccountAddition.bind(this);
+  }
+
+  handleAccountAddition(accountAdded) {
+    console.log("account added", accountAdded);
   }
 
   checkLoginStatus() {
@@ -103,7 +109,19 @@ class App extends Component {
   }
 
   routesForLoggedInUsers() {
-    return [<Route exact key="dashboard" path="/" component={Dashboard} />];
+    return [
+      <Route
+        exact
+        key="dashboard"
+        path="/"
+        render={props => (
+          <Dashboard
+            {...props}
+            accountsFollowed={this.state.accountsFollowed}
+          />
+        )}
+      />
+    ];
   }
 
   navigationRenderer() {
@@ -111,6 +129,7 @@ class App extends Component {
       return (
         <DashboardNavigation
           currentUser={this.state.user}
+          handleAccountAddition={this.handleAccountAddition}
           handleLogout={this.handleLogout}
         />
       );
