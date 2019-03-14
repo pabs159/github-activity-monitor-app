@@ -32,7 +32,9 @@ class App extends Component {
   }
 
   handleAccountAddition(accountAdded) {
-    console.log("account added", accountAdded);
+    this.setState({
+      accountsFollowed: [accountAdded].concat(this.state.accountsFollowed)
+    });
   }
 
   checkLoginStatus() {
@@ -61,6 +63,10 @@ class App extends Component {
         this.setState({
           isLoading: false
         });
+
+        if (this.state.loggedInStatus === "LOGGED_IN") {
+          this.getAccounts();
+        }
       })
       .catch(error => {
         console.log("checkLoginStatus error", error);
@@ -122,6 +128,21 @@ class App extends Component {
         )}
       />
     ];
+  }
+
+  getAccounts() {
+    axios
+      .get("https://bottega-activity-tracker-api.herokuapp.com/accounts", {
+        withCredentials: true
+      })
+      .then(response => {
+        console.log("get accounts", response);
+        this.setState({
+          accountsFollowed: response.data.accounts,
+          isLoading: false
+        });
+      })
+      .catch(error => console.log("getAccounts error", error));
   }
 
   navigationRenderer() {

@@ -1,40 +1,15 @@
 import React, { Component } from "react";
-import axios from "axios";
-import MainLoader from "../../components/loaders/MainLoader";
 
 export default class Dashboard extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      accounts: [],
-      isLoading: true
-    };
+  constructor(props) {
+    super(props);
   }
 
-  componentWillMount() {
-    this.getAccounts();
-  }
-
-  getAccounts() {
-    axios
-      .get("https://bottega-activity-tracker-api.herokuapp.com/accounts", {
-        withCredentials: true
-      })
-      .then(response => {
-        this.setState({
-          accounts: response.data.accounts,
-          isLoading: false
-        });
-      })
-      .catch(error => console.log("getAccounts error", error));
+  componentDidMount() {
+    console.log("accountsFollowed", this.props.accountsFollowed);
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <MainLoader />;
-    }
-
     return (
       <div className="dashboard-wrapper">
         <div className="container">Dashboard goes here...</div>
