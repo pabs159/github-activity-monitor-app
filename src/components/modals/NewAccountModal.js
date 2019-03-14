@@ -49,6 +49,11 @@ export default class NewAccountModal extends Component {
         { withCredentials: true }
       )
       .then(response => {
+        this.setState({
+          username: "",
+          error: ""
+        });
+
         this.props.handleSuccessfulAccountAddition(response.data.account);
       })
       .catch(error => {

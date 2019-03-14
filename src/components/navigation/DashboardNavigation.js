@@ -29,10 +29,10 @@ class DashboardNavigation extends Component {
   };
 
   handleSuccessfulAccountAddition(accountAdded) {
-    // TODO
-    // render them in the dashboard
-    // console.log("handleSuccessfulAccountAddition", accountAdded);
     this.props.handleAccountAddition(accountAdded);
+    this.setState({
+      modalIsOpen: false
+    });
   }
 
   handleLogoutLinkClick = () => {
