@@ -3,6 +3,8 @@ import React from "react";
 const UserDataCard = props => {
   const { login, avatar_url } = props.account;
 
+  console.log("props account", props.account);
+
   return (
     <div className="user-data-card">
       <div className="follower-avatar">

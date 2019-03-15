@@ -26,6 +26,9 @@ export default class NewAccountModal extends Component {
 
     this.state = {
       login: "",
+      city: "",
+      state: "",
+      postal: "",
       error: ""
     };
 
@@ -38,12 +41,17 @@ export default class NewAccountModal extends Component {
   }
 
   handleSubmit(event) {
+    const { login, city, state, postal } = this.state;
+
     axios
       .post(
         "https://bottega-activity-tracker-api.herokuapp.com/accounts",
         {
           account: {
-            login: this.state.login
+            login: login,
+            city: city,
+            state: state,
+            postal: postal
           }
         },
         { withCredentials: true }
@@ -51,10 +59,13 @@ export default class NewAccountModal extends Component {
       .then(response => {
         this.setState({
           login: "",
+          city: "",
+          state: "",
+          postal: "",
           error: ""
         });
 
-        this.props.handleSuccessfulAccountAddition(response.data);
+        this.props.handleSuccessfulAccountAddition(response.data.account);
       })
       .catch(error => {
         console.log("in handle submit error for new account", error);
@@ -93,6 +104,51 @@ export default class NewAccountModal extends Component {
               name="login"
               placeholder="Github username"
               value={this.state.login}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <div className="icon-wrapper">
+              <FontAwesomeIcon icon="at" />
+            </div>
+            <input
+              className="full-width-element"
+              type="text"
+              name="city"
+              placeholder="City"
+              value={this.state.city}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <div className="icon-wrapper">
+              <FontAwesomeIcon icon="at" />
+            </div>
+            <input
+              className="full-width-element"
+              type="text"
+              name="state"
+              placeholder="State"
+              value={this.state.state}
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <div className="icon-wrapper">
+              <FontAwesomeIcon icon="at" />
+            </div>
+            <input
+              className="full-width-element"
+              type="text"
+              name="postal"
+              placeholder="Postal code"
+              value={this.state.postal}
               onChange={this.handleChange}
               required
             />

@@ -30,6 +30,8 @@ export default class Dashboard extends Component {
     this.getAccounts();
   }
 
+  // TODO
+  // Style the follower cards
   render() {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
