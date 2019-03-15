@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
 
     if (this.props.accountsFollowed && this.props.accountsFollowed.length > 0) {
       accountList = this.props.accountsFollowed.map(account => {
-        return <div>{account.username}</div>;
+        return <div>{account.login}</div>;
       });
     }
 

@@ -25,7 +25,7 @@ export default class NewAccountModal extends Component {
     };
 
     this.state = {
-      username: "",
+      login: "",
       error: ""
     };
 
@@ -43,20 +43,18 @@ export default class NewAccountModal extends Component {
         "https://bottega-activity-tracker-api.herokuapp.com/accounts",
         {
           account: {
-            username: this.state.username
+            login: this.state.login
           }
         },
         { withCredentials: true }
       )
       .then(response => {
         this.setState({
-          username: "",
+          login: "",
           error: ""
         });
 
-        console.log("respone in modal", response);
-
-        this.props.handleSuccessfulAccountAddition(response.data.account);
+        this.props.handleSuccessfulAccountAddition(response.data);
       })
       .catch(error => {
         console.log("in handle submit error for new account", error);
@@ -92,9 +90,9 @@ export default class NewAccountModal extends Component {
             <input
               className="full-width-element"
               type="text"
-              name="username"
+              name="login"
               placeholder="Github username"
-              value={this.state.username}
+              value={this.state.login}
               onChange={this.handleChange}
               required
             />
