@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import UserDataCard from "../../components/cards/UserDataCard";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -38,17 +39,16 @@ export default class Dashboard extends Component {
 
     if (this.props.accountsFollowed && this.props.accountsFollowed.length > 0) {
       accountList = this.props.accountsFollowed.map(account => {
-        return <div>{account.login}</div>;
+        return <UserDataCard key={account.id} account={account} />;
       });
     }
 
-    // TODO
-    // Render list of users
-    // Task from previous app
     return (
       <div className="dashboard-wrapper">
         {accountList.length > 0 ? (
-          <div className="container">{accountList}</div>
+          <div className="container">
+            <div className="follower-charts">{accountList}</div>
+          </div>
         ) : null}
       </div>
     );
