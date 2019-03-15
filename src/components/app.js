@@ -29,12 +29,21 @@ class App extends Component {
       this
     );
     this.handleAccountAddition = this.handleAccountAddition.bind(this);
+    this.populateAccounts = this.populateAccounts.bind(this);
+  }
+
+  populateAccounts(accountsFollowed) {
+    this.setState({ accountsFollowed });
   }
 
   handleAccountAddition(accountAdded) {
     this.setState({
       accountsFollowed: [accountAdded].concat(this.state.accountsFollowed)
     });
+  }
+
+  componentDidMount() {
+    this.checkLoginStatus();
   }
 
   checkLoginStatus() {
@@ -63,18 +72,10 @@ class App extends Component {
         this.setState({
           isLoading: false
         });
-
-        if (this.state.loggedInStatus === "LOGGED_IN") {
-          this.getAccounts();
-        }
       })
       .catch(error => {
         console.log("checkLoginStatus error", error);
       });
-  }
-
-  componentDidMount() {
-    this.checkLoginStatus();
   }
 
   handleSuccessfulRegistration(data) {
@@ -123,25 +124,12 @@ class App extends Component {
         render={props => (
           <Dashboard
             {...props}
+            populateAccounts={this.populateAccounts}
             accountsFollowed={this.state.accountsFollowed}
           />
         )}
       />
     ];
-  }
-
-  getAccounts() {
-    axios
-      .get("https://bottega-activity-tracker-api.herokuapp.com/accounts", {
-        withCredentials: true
-      })
-      .then(response => {
-        this.setState({
-          accountsFollowed: response.data.accounts,
-          isLoading: false
-        });
-      })
-      .catch(error => console.log("getAccounts error", error));
   }
 
   navigationRenderer() {
@@ -159,10 +147,6 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <MainLoader />;
-    }
-
     return (
       <div className="app">
         <Router>
