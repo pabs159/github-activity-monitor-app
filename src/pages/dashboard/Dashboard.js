@@ -31,6 +31,11 @@ export default class Dashboard extends Component {
   }
 
   // TODO
+  // The API is auto creating the events when an account is created.
+  // Github API limits 'events'. So get the total number of pages from API header res
+  // And create all 300 max events and store in db.
+  // Make sure to add some type of id from github and then create rake task that iterates through
+  // each account daily and adds any new events.
   // Style the follower cards
   render() {
     if (this.state.isLoading) {
