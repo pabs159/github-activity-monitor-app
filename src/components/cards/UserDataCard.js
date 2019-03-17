@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserDataCard = props => {
   const { login, avatar_url } = props.account;
@@ -8,13 +9,11 @@ const UserDataCard = props => {
   return (
     <div className="user-data-card">
       <div className="follower-avatar">
-        <a href={`https://github.com/${login}`} target="_blank">
+        <Link to={`/account/${login}`}>
           <img src={avatar_url} alt={login} />
-        </a>
+        </Link>
         <div className="follower-username">
-          <a href={`https://github.com/${login}`} target="_blank">
-            {login}
-          </a>
+          <Link to={`/account/${login}`}>{login}</Link>
         </div>
       </div>
       <div className="follower-chart-wrapper">

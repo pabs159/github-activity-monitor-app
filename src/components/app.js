@@ -8,6 +8,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import NoMatch from "../pages/errors/NoMatch";
 import DashboardNavigation from "./navigation/DashboardNavigation";
 import CorporateNavigation from "./navigation/CorporateNavigation";
+import AccountDetail from "../pages/dashboard/AccountDetail";
 
 class App extends Component {
   constructor() {
@@ -127,6 +128,12 @@ class App extends Component {
             accountsFollowed={this.state.accountsFollowed}
           />
         )}
+      />,
+      <Route
+        exact
+        key="account-detail"
+        path="/account/:login"
+        component={AccountDetail}
       />
     ];
   }
