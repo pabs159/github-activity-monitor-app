@@ -1,4 +1,4 @@
-.follower-charts {
+.user-data-cards {
   margin: 42px 0px;
   display: grid;
   grid-template-columns: 1fr;
@@ -17,7 +17,7 @@
     }
   }
 
-  .follower-chart-item {
+  .user-data-card {
     display: grid;
     grid-template-columns: 200px 1fr;
 

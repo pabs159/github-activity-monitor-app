@@ -54,7 +54,7 @@ export default class Dashboard extends Component {
       <div className="dashboard-wrapper">
         {accountList.length > 0 ? (
           <div className="container">
-            <div className="follower-charts">{accountList}</div>
+            <div className="user-data-cards">{accountList}</div>
           </div>
         ) : null}
       </div>

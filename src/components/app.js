@@ -8,7 +8,6 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import NoMatch from "../pages/errors/NoMatch";
 import DashboardNavigation from "./navigation/DashboardNavigation";
 import CorporateNavigation from "./navigation/CorporateNavigation";
-import MainLoader from "./loaders/MainLoader";
 
 class App extends Component {
   constructor() {
