@@ -2,4 +2,12 @@
   @include inset-shadow();
   background-color: $offwhite;
   height: calc(100vh - 120px);
+
+  #homepage-svg {
+    path {
+      fill: transparent;
+      stroke: $dark-primary;
+      stroke-width: 3px;
+    }
+  }
 }

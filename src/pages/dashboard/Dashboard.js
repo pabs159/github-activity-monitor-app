@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ReactVivus from "react-vivus";
+
+import githubLogo from "../../components/svgs/github-logo.svg";
 import UserDataCard from "../../components/cards/UserDataCard";
 
 export default class Dashboard extends Component {
@@ -56,7 +59,20 @@ export default class Dashboard extends Component {
           <div className="container">
             <div className="user-data-cards">{accountList}</div>
           </div>
-        ) : null}
+        ) : (
+          <ReactVivus
+            id="homepage-svg"
+            option={{
+              file: githubLogo,
+              type: "oneByOne",
+              animTimingFunction: "EASE",
+              duration: 250,
+              onReady: console.log
+            }}
+            style={{ height: "100%" }}
+            callback={console.log}
+          />
+        )}
       </div>
     );
   }
