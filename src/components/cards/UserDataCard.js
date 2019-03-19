@@ -11,8 +11,6 @@ const UserDataCard = props => {
     return dateB - dateA;
   });
 
-  console.log("latestEvent", latestEvent);
-
   return (
     <div className="user-data-card">
       <div className="follower-avatar">
@@ -26,16 +24,30 @@ const UserDataCard = props => {
 
       {latestEvent ? (
         <div className="user-data-details">
-          <div>Last activity: {latestEvent[0]["date"]}</div>
-          <div>Latest commit: {latestEvent[0]["message"]}</div>
-          <div>
-            For project:{" "}
-            <a
-              href={"https://github.com/" + latestEvent[0]["repo_name"]}
-              target="_blank"
-            >
-              {latestEvent[0]["repo_name"]}
-            </a>
+          <div className="data-wrapper">
+            <span className="label">
+              <FontAwesomeIcon icon="calendar-check" />
+            </span>{" "}
+            <span className="title">{latestEvent[0]["date"]}</span>
+          </div>
+          <div className="data-wrapper">
+            <span className="label">
+              <FontAwesomeIcon icon="code-branch" />
+            </span>{" "}
+            <span className="title">{latestEvent[0]["message"]}</span>
+          </div>
+          <div className="data-wrapper">
+            <span className="label">
+              <FontAwesomeIcon icon="tasks" />
+            </span>{" "}
+            <span className="title">
+              <a
+                href={"https://github.com/" + latestEvent[0]["repo_name"]}
+                target="_blank"
+              >
+                {latestEvent[0]["repo_name"]}
+              </a>
+            </span>
           </div>
 
           <div className="action-links">
