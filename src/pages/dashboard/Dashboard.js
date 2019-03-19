@@ -60,18 +60,26 @@ export default class Dashboard extends Component {
             <div className="user-data-cards">{accountList}</div>
           </div>
         ) : (
-          <ReactVivus
-            id="homepage-svg"
-            option={{
-              file: githubLogo,
-              type: "oneByOne",
-              animTimingFunction: "EASE",
-              duration: 250,
-              onReady: console.log
-            }}
-            style={{ height: "100%" }}
-            callback={console.log}
-          />
+          <div className="empty-dashboard-wrapper">
+            <div className="content">
+              <ReactVivus
+                id="homepage-svg"
+                option={{
+                  file: githubLogo,
+                  type: "oneByOne",
+                  animTimingFunction: "EASE",
+                  duration: 250,
+                  onReady: console.log
+                }}
+                style={{ width: "100%" }}
+                callback={console.log}
+              />
+
+              <div className="text">
+                You're not following any GitHub users, add your first account
+              </div>
+            </div>
+          </div>
         )}
       </div>
     );

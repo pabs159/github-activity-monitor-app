@@ -3,11 +3,34 @@
   background-color: $offwhite;
   height: calc(100vh - 120px);
 
-  #homepage-svg {
-    path {
-      fill: transparent;
-      stroke: $dark-primary;
-      stroke-width: 3px;
+  .empty-dashboard-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      #homepage-svg {
+        path {
+          fill: transparent;
+          stroke: $dark-primary;
+          stroke-width: 3px;
+        }
+      }
+
+      .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: $dark-primary;
+        font-size: 4em;
+        font-weight: 900;
+        padding: 200px;
+      }
     }
   }
 }
