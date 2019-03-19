@@ -21,6 +21,32 @@
     display: grid;
     grid-template-columns: 200px 1fr;
 
+    .user-data-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-gap: 21px;
+
+      .action-links {
+        font-size: 1.2em;
+        cursor: pointer;
+
+        a {
+          svg {
+            margin-right: 5px;
+          }
+
+          color: $primary;
+          font-weight: 900;
+          margin-right: 20px;
+          transition: 0.5s ease-in-out;
+
+          &:hover {
+            color: $dark-primary;
+          }
+        }
+      }
+    }
+
     .follower-avatar {
       display: flex;
       justify-content: center;

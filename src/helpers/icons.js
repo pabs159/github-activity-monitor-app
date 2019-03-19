@@ -16,7 +16,9 @@ import {
   faCalendarAlt,
   faPlusSquare,
   faFilter,
-  faLocationArrow
+  faLocationArrow,
+  faExternalLinkAlt,
+  faUserTimes
 } from "@fortawesome/free-solid-svg-icons";
 
 const Icons = () => {
@@ -37,7 +39,9 @@ const Icons = () => {
     faCalendarAlt,
     faPlusSquare,
     faFilter,
-    faLocationArrow
+    faLocationArrow,
+    faExternalLinkAlt,
+    faUserTimes
   );
 };
 
