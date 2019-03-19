@@ -1,4 +1,5 @@
 .dashboard-wrapper {
   @include inset-shadow();
   background-color: $offwhite;
+  height: calc(100vh - 120px);
 }
