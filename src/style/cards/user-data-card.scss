@@ -20,11 +20,15 @@
   .user-data-card {
     display: grid;
     grid-template-columns: 200px 1fr;
+    width: 1200px;
 
     .user-data-details {
       display: grid;
       grid-template-columns: 1fr;
       grid-gap: 21px;
+      padding: 50px;
+      background-color: white;
+      border-radius: 3px;
 
       .action-links {
         font-size: 1.2em;
