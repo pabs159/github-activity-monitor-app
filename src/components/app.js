@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Icons from "../helpers/icons";
+import MainLoader from "../components/loaders/MainLoader";
 import Home from "../pages/Home";
 import Dashboard from "../pages/dashboard/Dashboard";
 import NoMatch from "../pages/errors/NoMatch";
@@ -153,6 +154,10 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <MainLoader />;
+    }
+
     return (
       <div className="app">
         <Router>
