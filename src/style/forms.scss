@@ -28,3 +28,36 @@
 input {
   background-color: transparent;
 }
+
+.address-form-wrapper {
+  display: flex;
+  align-items: center;
+
+  .icon-wrapper {
+    font-size: 1.5em;
+    color: $primary;
+    margin-right: 20px;
+  }
+
+  input {
+    width: 100%;
+    font-size: 1.5em;
+    color: $dark-theme;
+    height: 42px;
+    outline: none;
+    border: 2px solid transparent;
+    border-bottom: 2px solid $primary;
+    margin-right: 20px !important;
+  }
+}
+
+.new-account-username-field {
+  width: 100%;
+  font-size: 1.5em;
+  color: $dark-theme;
+  height: 42px;
+  outline: none;
+  border: 2px solid transparent;
+  border-bottom: 2px solid $primary;
+  margin-right: 20px !important;
+}

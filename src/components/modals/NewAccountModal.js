@@ -20,7 +20,7 @@ export default class NewAccountModal extends Component {
         bottom: "auto",
         marginRight: "-50%",
         transform: "translate(-50%, -50%)",
-        width: "342px"
+        width: "600px"
       }
     };
 
@@ -99,7 +99,7 @@ export default class NewAccountModal extends Component {
               <FontAwesomeIcon icon="at" />
             </div>
             <input
-              className="full-width-element"
+              className="new-account-username-field"
               type="text"
               name="login"
               placeholder="Github username"
@@ -109,12 +109,12 @@ export default class NewAccountModal extends Component {
             />
           </div>
 
-          <div className="form-group">
+          <div className="address-form-wrapper">
             <div className="icon-wrapper">
-              <FontAwesomeIcon icon="at" />
+              <FontAwesomeIcon icon="location-arrow" />
             </div>
+
             <input
-              className="full-width-element"
               type="text"
               name="city"
               placeholder="City"
@@ -122,14 +122,8 @@ export default class NewAccountModal extends Component {
               onChange={this.handleChange}
               required
             />
-          </div>
 
-          <div className="form-group">
-            <div className="icon-wrapper">
-              <FontAwesomeIcon icon="at" />
-            </div>
             <input
-              className="full-width-element"
               type="text"
               name="state"
               placeholder="State"
@@ -137,14 +131,8 @@ export default class NewAccountModal extends Component {
               onChange={this.handleChange}
               required
             />
-          </div>
 
-          <div className="form-group">
-            <div className="icon-wrapper">
-              <FontAwesomeIcon icon="at" />
-            </div>
             <input
-              className="full-width-element"
               type="text"
               name="postal"
               placeholder="Postal code"
