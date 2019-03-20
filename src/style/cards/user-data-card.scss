@@ -32,13 +32,17 @@
       font-size: 1.5em;
       font-weight: 900;
       color: $dark-theme;
+      @include drop-shadow();
 
       .data-wrapper {
         display: flex;
-        justify-content: align-items;
 
         .title {
           margin-top: 8px;
+
+          a {
+            color: $primary;
+          }
         }
 
         .label {
@@ -52,7 +56,10 @@
       }
 
       .action-links {
-        font-size: 1.2em;
+        border-top: 1px solid rgba(1, 1, 1, 0.1);
+        margin-top: 20px;
+        padding-top: 20px;
+        font-size: 0.8em;
         cursor: pointer;
 
         a {
