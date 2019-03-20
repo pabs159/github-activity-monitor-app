@@ -1,13 +1,11 @@
 .dashboard-wrapper {
   @include inset-shadow();
   background-color: $offwhite;
-  height: calc(100vh - 120px);
 
   .empty-dashboard-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 120px);
 
     .content {
       display: grid;

@@ -4,6 +4,7 @@ import ReactVivus from "react-vivus";
 
 import githubLogo from "../../components/svgs/github-logo.svg";
 import UserDataCard from "../../components/cards/UserDataCard";
+import DashboardMap from "../../maps/DashboardMap";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ export default class Dashboard extends Component {
 
     return (
       <div className="dashboard-wrapper">
+        <DashboardMap />
         {accountList.length > 0 ? (
           <div className="container">
             <div className="user-data-cards">{accountList}</div>
