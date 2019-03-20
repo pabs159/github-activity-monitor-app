@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import moment from "moment";
 
 const UserDataCard = props => {
   const { login, avatar_url, events } = props.account;
@@ -28,7 +29,9 @@ const UserDataCard = props => {
             <span className="label">
               <FontAwesomeIcon icon="calendar-check" />
             </span>{" "}
-            <span className="title">{latestEvent[0]["date"]}</span>
+            <span className="title">
+              Last activity {moment(latestEvent[0].date).fromNow()}
+            </span>
           </div>
           <div className="data-wrapper">
             <span className="label">
