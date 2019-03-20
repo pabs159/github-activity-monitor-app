@@ -32,7 +32,11 @@
       font-size: 1.5em;
       font-weight: 900;
       color: $dark-theme;
-      @include drop-shadow();
+      transition: 0.5s ease-in-out;
+
+      &:hover {
+        @include drop-shadow();
+      }
 
       .data-wrapper {
         display: flex;
