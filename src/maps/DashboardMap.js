@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import USAMap from "react-usa-map";
+import Axios from "axios";
 
 class DashboardMap extends Component {
   mapHandler = event => {
@@ -18,6 +19,22 @@ class DashboardMap extends Component {
       }
     };
   };
+
+  componentWillMount() {
+    this.getLocations();
+  }
+
+  getLocations() {
+    Axios.get("https://bottega-activity-tracker-api.herokuapp.com/locations", {
+      withCredentials: true
+    })
+      .then(response => {
+        console.log("res from get locations", response);
+      })
+      .catch(error => {
+        console.log("error from getting locations", error);
+      });
+  }
 
   render() {
     return (

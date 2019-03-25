@@ -1,4 +1,6 @@
 .DashboardMap {
+  display: flex;
+  justify-content: center;
   path {
     pointer-events: all;
   }

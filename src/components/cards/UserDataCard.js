@@ -5,12 +5,15 @@ import moment from "moment";
 
 const UserDataCard = props => {
   const { login, avatar_url, events } = props.account;
+  let latestEvent;
 
-  const latestEvent = events.sort(function compare(a, b) {
-    var dateB = new Date(b.date);
-    var dateA = new Date(a.date);
-    return dateB - dateA;
-  });
+  if (events.length > 0) {
+    latestEvent = events.sort(function compare(a, b) {
+      var dateB = new Date(b.date);
+      var dateA = new Date(a.date);
+      return dateB - dateA;
+    });
+  }
 
   return (
     <div className="user-data-card">
@@ -65,7 +68,13 @@ const UserDataCard = props => {
             </a>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="user-data-details">
+          <div className="data-wrapper">
+            {login} currently does not have any activity
+          </div>
+        </div>
+      )}
     </div>
   );
 };
