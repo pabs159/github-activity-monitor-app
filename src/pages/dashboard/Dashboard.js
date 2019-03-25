@@ -56,9 +56,9 @@ export default class Dashboard extends Component {
 
     return (
       <div className="dashboard-wrapper">
-        <DashboardMap />
         {accountList.length > 0 ? (
           <div className="container">
+            <DashboardMap />
             <div className="user-data-cards">{accountList}</div>
           </div>
         ) : (
