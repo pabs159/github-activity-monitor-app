@@ -2,6 +2,35 @@
   @include inset-shadow();
   background-color: $offwhite;
 
+  .container {
+    .content {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 1200px;
+
+      .pills {
+        height: 80px;
+        a {
+          cursor: pointer;
+          margin: 15px;
+          padding: 10px 25px;
+          font-size: 1.5em;
+          font-weight: 900;
+          color: $dark-theme;
+          border: 2px solid $primary;
+          border-radius: 20px;
+          transition: 0.5s ease-in-out;
+
+          &:hover {
+            background-color: $primary;
+            color: white;
+            @include drop-shadow();
+          }
+        }
+      }
+    }
+  }
+
   .empty-dashboard-wrapper {
     display: flex;
     justify-content: center;

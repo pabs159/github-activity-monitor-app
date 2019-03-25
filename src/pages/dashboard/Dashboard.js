@@ -76,16 +76,18 @@ export default class Dashboard extends Component {
       <div className="dashboard-wrapper">
         {accountList.length > 0 ? (
           <div className="container">
-            <div className="pills">
-              <a onClick={this.handleChartPillClick}>Chart</a>
-              <a onClick={this.handleMapPillClick}>Map</a>
-            </div>
+            <div className="content">
+              <div className="pills">
+                <a onClick={this.handleChartPillClick}>Chart</a>
+                <a onClick={this.handleMapPillClick}>Map</a>
+              </div>
 
-            {this.state.chartHeroIsVisible ? (
-              <div className="user-data-cards">{accountList}</div>
-            ) : (
-              <DashboardMap />
-            )}
+              {this.state.chartHeroIsVisible ? (
+                <div className="user-data-cards">{accountList}</div>
+              ) : (
+                <DashboardMap />
+              )}
+            </div>
           </div>
         ) : (
           <div className="empty-dashboard-wrapper">
