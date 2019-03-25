@@ -4,7 +4,6 @@ import ReactVivus from "react-vivus";
 
 import githubLogo from "../../components/svgs/github-logo.svg";
 import UserDataCard from "../../components/cards/UserDataCard";
-import DashboardMap from "../../maps/DashboardMap";
 import ChoroplethMap from "../../components/maps/ChoroplethMap";
 
 export default class Dashboard extends Component {
