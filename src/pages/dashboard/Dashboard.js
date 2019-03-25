@@ -11,8 +11,27 @@ export default class Dashboard extends Component {
     super(props);
 
     this.state = {
-      isLoading: true
+      isLoading: true,
+      mapIsVisible: false,
+      chartHeroIsVisible: true
     };
+
+    this.handleMapPillClick = this.handleMapPillClick.bind(this);
+    this.handleChartPillClick = this.handleChartPillClick.bind(this);
+  }
+
+  handleChartPillClick() {
+    this.setState({
+      mapIsVisible: false,
+      chartHeroIsVisible: true
+    });
+  }
+
+  handleMapPillClick() {
+    this.setState({
+      mapIsVisible: true,
+      chartHeroIsVisible: false
+    });
   }
 
   getAccounts() {
@@ -40,7 +59,6 @@ export default class Dashboard extends Component {
   // And create all 300 max events and store in db.
   // Make sure to add some type of id from github and then create rake task that iterates through
   // each account daily and adds any new events.
-  // Style the follower cards
   render() {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
@@ -58,8 +76,16 @@ export default class Dashboard extends Component {
       <div className="dashboard-wrapper">
         {accountList.length > 0 ? (
           <div className="container">
-            <DashboardMap />
-            <div className="user-data-cards">{accountList}</div>
+            <div className="pills">
+              <a onClick={this.handleChartPillClick}>Chart</a>
+              <a onClick={this.handleMapPillClick}>Map</a>
+            </div>
+
+            {this.state.chartHeroIsVisible ? (
+              <div className="user-data-cards">{accountList}</div>
+            ) : (
+              <DashboardMap />
+            )}
           </div>
         ) : (
           <div className="empty-dashboard-wrapper">
