@@ -84,13 +84,6 @@ class DashboardNavigation extends Component {
               <div className="text">Track New User</div>
             </a>
           </div>
-
-          <div className="nav-link-wrapper">
-            <NavLink to="/webinars" activeClassName="active-nav-link">
-              <FontAwesomeIcon icon="filter" />
-              <div className="text">Filters</div>
-            </NavLink>
-          </div>
         </div>
 
         <div className="right-column">
