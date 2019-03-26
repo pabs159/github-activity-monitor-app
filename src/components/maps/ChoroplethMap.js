@@ -57,7 +57,6 @@ class ChoroplethMap extends Component {
     let cx = new Datamap({
       element: document.getElementById("cloropleth_map"),
       scope: "usa",
-      width: "2500",
       geographyConfig: {
         popupOnHover: true,
         highlightOnHover: true,
@@ -109,7 +108,8 @@ class ChoroplethMap extends Component {
         id="cloropleth_map"
         style={{
           height: "500px",
-          width: "1200px"
+          width: "100%",
+          marginTop: "-150px"
         }}
       />
     );
