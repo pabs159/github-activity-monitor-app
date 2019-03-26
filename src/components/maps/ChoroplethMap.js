@@ -1,67 +1,63 @@
 import React, { Component } from "react";
 import Datamap from "datamaps";
 import * as d3 from "d3";
-import { scaleLinear } from "d3-scale";
-import { geoMercator, geoPath } from "d3-geo";
 import UsaJson from "../data/Usa.topo.json";
+import Axios from "axios";
 
 class ChoroplethMap extends Component {
   constructor() {
     super();
 
     this.state = {
-      data: [
-        ["AZ", 75],
-        ["NY", 43],
-        ["FL", 50],
-        ["IL", 88],
-        ["NM", 21],
-        ["VT", 43],
-        ["CA", 21],
-        ["NH", 19],
-        ["WY", 60],
-        ["HI", 4],
-        ["OR", 44],
-        ["QA", 38],
-        ["NV", 67]
-      ]
+      isLoading: true,
+      data: []
     };
   }
 
-  componentDidMount() {
-    // Datamaps expect data in format:
-    // { "USA": { "fillColor": "#42a844", numberOfWhatever: 75},
-    //   "FRA": { "fillColor": "#8dc386", numberOfWhatever: 43 } }
-    let dataset = {};
+  getAccountsByState() {
+    Axios.get("https://bottega-activity-tracker-api.herokuapp.com/locations", {
+      withCredentials: true
+    })
+      .then(response => {
+        const data = Object.keys(response.data).map(stateAbbreviation => {
+          return [stateAbbreviation, response.data[stateAbbreviation].length];
+        });
 
-    // We need to colorize every country based on "numberOfWhatever"
-    // colors should be uniq for every value.
-    // For this purpose we create palette(using min/max this.props.data-value)
+        this.setState({ data: data, isLoading: false });
+        this.mapSetup();
+      })
+      .catch(error => {
+        console.log("get locations error", error);
+      });
+  }
+
+  componentDidMount() {
+    this.getAccountsByState();
+  }
+
+  mapSetup() {
+    let dataset = {};
     let onlyValues = this.state.data.map(function(obj) {
       return obj[1];
     });
     let minValue = Math.min.apply(null, onlyValues),
       maxValue = Math.max.apply(null, onlyValues);
 
-    // create color palette function
-    // color can be whatever you wish
     let paletteScale = d3
       .scaleLinear()
       .domain([minValue, maxValue])
       .range(["#EFEFFF", "#02386F"]); // blue color
 
-    // fill dataset in appropriate format
     this.state.data.forEach(function(item) {
-      //
-      // item example value ["USA", 70]
       let iso = item[0],
         value = item[1];
       dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
     });
 
-    let map = new Datamap({
+    let cx = new Datamap({
       element: document.getElementById("cloropleth_map"),
       scope: "usa",
+      width: "2500",
       geographyConfig: {
         popupOnHover: true,
         highlightOnHover: true,
@@ -70,7 +66,6 @@ class ChoroplethMap extends Component {
         borderWidth: 0.5,
         dataJson: UsaJson,
         popupTemplate: function(geo, data) {
-          // don't show tooltip if country don't present in dataset
           if (!data) {
             return;
           }
@@ -107,13 +102,14 @@ class ChoroplethMap extends Component {
       }
     });
   }
+
   render() {
     return (
       <div
         id="cloropleth_map"
         style={{
-          height: "100%",
-          width: "100%"
+          height: "500px",
+          width: "1200px"
         }}
       />
     );
