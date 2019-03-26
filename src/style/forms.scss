@@ -49,6 +49,11 @@ input {
     border-bottom: 2px solid $primary;
     margin-right: 20px !important;
   }
+
+  .select-element {
+    width: 90% !important;
+    font-size: 2em;
+  }
 }
 
 .new-account-username-field {

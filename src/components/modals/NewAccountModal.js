@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactModal from "react-modal";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Select from "react-select";
 
 ReactModal.setAppElement(".app-wrapper");
 
@@ -26,14 +27,69 @@ export default class NewAccountModal extends Component {
 
     this.state = {
       login: "",
-      city: "",
-      state: "",
-      postal: "",
+      selectedState: {},
+      stateList: [
+        { value: "AL", label: "AL" },
+        { value: "AK", label: "AK" },
+        { value: "AZ", label: "AZ" },
+        { value: "AR", label: "AR" },
+        { value: "CA", label: "CA" },
+        { value: "CO", label: "CO" },
+        { value: "CT", label: "CT" },
+        { value: "DE", label: "DE" },
+        { value: "FL", label: "FL" },
+        { value: "GA", label: "GA" },
+        { value: "HI", label: "HI" },
+        { value: "ID", label: "ID" },
+        { value: "IL", label: "IL" },
+        { value: "IN", label: "IN" },
+        { value: "IA", label: "IA" },
+        { value: "KS", label: "KS" },
+        { value: "KY", label: "KY" },
+        { value: "LA", label: "LA" },
+        { value: "ME", label: "ME" },
+        { value: "MD", label: "MD" },
+        { value: "MA", label: "MA" },
+        { value: "MI", label: "MI" },
+        { value: "MN", label: "MN" },
+        { value: "MS", label: "MS" },
+        { value: "MO", label: "MO" },
+        { value: "MT", label: "MT" },
+        { value: "NE", label: "NE" },
+        { value: "NV", label: "NV" },
+        { value: "NH", label: "NH" },
+        { value: "NJ", label: "NJ" },
+        { value: "NM", label: "NM" },
+        { value: "NY", label: "NY" },
+        { value: "NC", label: "NC" },
+        { value: "ND", label: "ND" },
+        { value: "OH", label: "OH" },
+        { value: "OK", label: "OK" },
+        { value: "OR", label: "OR" },
+        { value: "PA", label: "PA" },
+        { value: "RI", label: "RI" },
+        { value: "SC", label: "SC" },
+        { value: "SD", label: "SD" },
+        { value: "TN", label: "TN" },
+        { value: "TX", label: "TX" },
+        { value: "UT", label: "UT" },
+        { value: "VT", label: "VT" },
+        { value: "VA", label: "VA" },
+        { value: "WA", label: "WA" },
+        { value: "WV", label: "WV" },
+        { value: "WI", label: "WI" },
+        { value: "WY", label: "WY" }
+      ],
       error: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStateSelection = this.handleStateSelection.bind(this);
+  }
+
+  handleStateSelection(selectedState) {
+    this.setState({ selectedState });
   }
 
   handleChange(event) {
@@ -41,7 +97,7 @@ export default class NewAccountModal extends Component {
   }
 
   handleSubmit(event) {
-    const { login, city, state, postal } = this.state;
+    const { login, state } = this.state;
 
     axios
       .post(
@@ -49,9 +105,7 @@ export default class NewAccountModal extends Component {
         {
           account: {
             login: login,
-            city: city,
-            state: state,
-            postal: postal
+            state: this.state.selectedState.value
           }
         },
         { withCredentials: true }
@@ -59,9 +113,7 @@ export default class NewAccountModal extends Component {
       .then(response => {
         this.setState({
           login: "",
-          city: "",
           state: "",
-          postal: "",
           error: ""
         });
 
@@ -71,7 +123,7 @@ export default class NewAccountModal extends Component {
         console.log("in handle submit error for new account", error);
         this.setState({
           error:
-            "There was an error adding that account. Are you sure you haven't already added that username?"
+            "There was an error adding that account. Are you sure you haven't already added that username and that the state is using a two letter abbreviation?"
         });
       });
 
@@ -79,6 +131,38 @@ export default class NewAccountModal extends Component {
   }
 
   render() {
+    const customStyles = {
+      control: base => ({
+        ...base,
+        minHeight: 30
+      }),
+      menuList: base => ({
+        ...base,
+        maxHeight: 100
+      }),
+      dropdownIndicator: base => ({
+        ...base,
+        padding: 4
+      }),
+      clearIndicator: base => ({
+        ...base,
+        padding: 4
+      }),
+      multiValue: base => ({
+        ...base,
+        backgroundColor: variables.colorPrimaryLighter
+      }),
+      valueContainer: base => ({
+        ...base,
+        padding: "0px 6px"
+      }),
+      input: base => ({
+        ...base,
+        margin: 0,
+        padding: 0
+      })
+    };
+
     return (
       <ReactModal
         isOpen={this.props.modalIsOpen}
@@ -114,32 +198,14 @@ export default class NewAccountModal extends Component {
               <FontAwesomeIcon icon="location-arrow" />
             </div>
 
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              value={this.state.city}
-              onChange={this.handleChange}
-              required
-            />
-
-            <input
-              type="text"
-              name="state"
-              placeholder="State"
-              value={this.state.state}
-              onChange={this.handleChange}
-              required
-            />
-
-            <input
-              type="text"
-              name="postal"
-              placeholder="Postal code"
-              value={this.state.postal}
-              onChange={this.handleChange}
-              required
-            />
+            <div className="select-element">
+              <Select
+                value={this.state.selectedState}
+                onChange={this.handleStateSelection}
+                options={this.state.stateList}
+                styles={customStyles}
+              />
+            </div>
           </div>
 
           <div className="login-btn-wrapper">
