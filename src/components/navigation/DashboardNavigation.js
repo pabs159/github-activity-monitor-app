@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { withRouter } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
 import NavLogo from "../svgs/NavLogo";

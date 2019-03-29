@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ReactVivus from "react-vivus";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import githubLogo from "../../components/svgs/github-logo.svg";
 import UserDataCard from "../../components/cards/UserDataCard";
 import ChoroplethMap from "../../components/maps/ChoroplethMap";
 import NewAccount from "./NewAccount";
+import NavLogo from "../../components/svgs/NavLogo";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -20,6 +23,27 @@ export default class Dashboard extends Component {
     this.handleSuccessfulNewAccountCreation = this.handleSuccessfulNewAccountCreation.bind(
       this
     );
+    this.handleLogoutLinkClick = this.handleLogoutLinkClick.bind(this);
+  }
+
+  handleLogoutLinkClick() {
+    this.signOut();
+  }
+
+  signOut(event) {
+    axios
+      .delete(`https://bottega-activity-tracker-api.herokuapp.com/logout`, {
+        withCredentials: true
+      })
+      .then(response => {
+        this.props.handleLogout();
+        return response;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    event.preventDefault();
   }
 
   handleSuccessfulNewAccountCreation(account) {
@@ -88,43 +112,62 @@ export default class Dashboard extends Component {
     };
 
     return (
-      <div className="dashboard-wrapper">
-        {accountList.length > 0 ? (
-          <div className="container">
-            <div className="content">
-              <div className="pills">
-                <a onClick={() => this.handlePillClick("CHART")}>Chart</a>
-                <a onClick={() => this.handlePillClick("FEED")}>Feed</a>
-                <a onClick={() => this.handlePillClick("MAP")}>Map</a>
-                <a onClick={() => this.handlePillClick("NEW")}>
-                  Add New Account
-                </a>
-              </div>
+      <div>
+        <div className="corporate-layout-wrapper">
+          <div className="corporate-navigation-wrapper">
+            <div className="left-column">
+              <Link to="/">
+                <div className="brand">
+                  <NavLogo />
+                </div>
+              </Link>
+            </div>
 
-              {contentRenderer()}
+            <div className="right-column">
+              <a onClick={this.handleLogoutLinkClick}>
+                <FontAwesomeIcon icon="sign-out-alt" />
+              </a>
             </div>
           </div>
-        ) : (
-          <div className="empty-dashboard-wrapper">
-            <div className="content">
-              <ReactVivus
-                id="homepage-svg"
-                option={{
-                  file: githubLogo,
-                  type: "oneByOne",
-                  animTimingFunction: "EASE",
-                  duration: 250,
-                  onReady: console.log
-                }}
-                style={{ width: "100%" }}
-              />
+        </div>
+        <div className="dashboard-wrapper">
+          {accountList.length > 0 ? (
+            <div className="container">
+              <div className="content">
+                <div className="pills">
+                  <a onClick={() => this.handlePillClick("CHART")}>Chart</a>
+                  <a onClick={() => this.handlePillClick("FEED")}>Feed</a>
+                  <a onClick={() => this.handlePillClick("MAP")}>Map</a>
+                  <a onClick={() => this.handlePillClick("NEW")}>
+                    Add New Account
+                  </a>
+                </div>
 
-              <div className="text">
-                You're not following any GitHub users, add your first account
+                {contentRenderer()}
               </div>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="empty-dashboard-wrapper">
+              <div className="content">
+                <ReactVivus
+                  id="homepage-svg"
+                  option={{
+                    file: githubLogo,
+                    type: "oneByOne",
+                    animTimingFunction: "EASE",
+                    duration: 250,
+                    onReady: console.log
+                  }}
+                  style={{ width: "100%" }}
+                />
+
+                <div className="text">
+                  You're not following any GitHub users, add your first account
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

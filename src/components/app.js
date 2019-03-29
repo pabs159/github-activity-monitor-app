@@ -94,7 +94,6 @@ class App extends Component {
   }
 
   handleLogout() {
-    console.log("logout triggered");
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN"
     });
@@ -128,6 +127,7 @@ class App extends Component {
             populateAccounts={this.populateAccounts}
             accountsFollowed={this.state.accountsFollowed}
             handleAccountAddition={this.handleAccountAddition}
+            handleLogout={this.handleLogout}
           />
         )}
       />,
@@ -141,14 +141,7 @@ class App extends Component {
   }
 
   navigationRenderer() {
-    if (this.state.loggedInStatus === "LOGGED_IN") {
-      return (
-        <DashboardNavigation
-          currentUser={this.state.user}
-          handleLogout={this.handleLogout}
-        />
-      );
-    } else {
+    if (this.state.loggedInStatus !== "LOGGED_IN") {
       return <CorporateNavigation handleLogin={this.handleLogin} />;
     }
   }
