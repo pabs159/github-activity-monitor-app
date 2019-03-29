@@ -13,7 +13,8 @@ export default class Dashboard extends Component {
     this.state = {
       isLoading: true,
       mapIsVisible: false,
-      chartHeroIsVisible: true
+      chartHeroIsVisible: true,
+      stateData: []
     };
 
     this.handlePillClick = this.handlePillClick.bind(this);
@@ -33,6 +34,23 @@ export default class Dashboard extends Component {
     }
   }
 
+  getAccountsByState() {
+    axios
+      .get("https://bottega-activity-tracker-api.herokuapp.com/locations", {
+        withCredentials: true
+      })
+      .then(response => {
+        const stateData = Object.keys(response.data).map(stateAbbreviation => {
+          return [stateAbbreviation, response.data[stateAbbreviation].length];
+        });
+
+        this.setState({ stateData });
+      })
+      .catch(error => {
+        console.log("get locations error", error);
+      });
+  }
+
   getAccounts() {
     axios
       .get("https://bottega-activity-tracker-api.herokuapp.com/accounts", {
@@ -50,6 +68,7 @@ export default class Dashboard extends Component {
 
   componentWillMount() {
     this.getAccounts();
+    this.getAccountsByState();
   }
 
   // TODO
@@ -84,7 +103,7 @@ export default class Dashboard extends Component {
               {this.state.chartHeroIsVisible ? (
                 <div className="user-data-cards">{accountList}</div>
               ) : (
-                <ChoroplethMap />
+                <ChoroplethMap data={this.state.stateData} />
               )}
             </div>
           </div>

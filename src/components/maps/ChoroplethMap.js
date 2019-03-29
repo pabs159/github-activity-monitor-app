@@ -5,39 +5,17 @@ import UsaJson from "../data/Usa.topo.json";
 import Axios from "axios";
 
 class ChoroplethMap extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isLoading: true,
-      data: []
-    };
-  }
-
-  getAccountsByState() {
-    Axios.get("https://bottega-activity-tracker-api.herokuapp.com/locations", {
-      withCredentials: true
-    })
-      .then(response => {
-        const data = Object.keys(response.data).map(stateAbbreviation => {
-          return [stateAbbreviation, response.data[stateAbbreviation].length];
-        });
-
-        this.setState({ data: data, isLoading: false });
-        this.mapSetup();
-      })
-      .catch(error => {
-        console.log("get locations error", error);
-      });
+  constructor(props) {
+    super(props);
   }
 
   componentDidMount() {
-    this.getAccountsByState();
+    this.mapSetup();
   }
 
   mapSetup() {
     let dataset = {};
-    let onlyValues = this.state.data.map(function(obj) {
+    let onlyValues = this.props.data.map(function(obj) {
       return obj[1];
     });
     let minValue = Math.min.apply(null, onlyValues),
@@ -48,7 +26,7 @@ class ChoroplethMap extends Component {
       .domain([minValue, maxValue])
       .range(["#EFEFFF", "#02386F"]); // blue color
 
-    this.state.data.forEach(function(item) {
+    this.props.data.forEach(function(item) {
       let iso = item[0],
         value = item[1];
       dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
