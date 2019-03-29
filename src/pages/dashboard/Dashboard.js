@@ -12,43 +12,14 @@ export default class Dashboard extends Component {
 
     this.state = {
       isLoading: true,
-      mapIsVisible: false,
-      chartHeroIsVisible: true,
-      stateData: []
+      contentToShow: "CHART"
     };
 
     this.handlePillClick = this.handlePillClick.bind(this);
   }
 
-  handlePillClick(typeOfContentToShow) {
-    if (typeOfContentToShow === "MAP") {
-      this.setState({
-        mapIsVisible: true,
-        chartHeroIsVisible: false
-      });
-    } else {
-      this.setState({
-        mapIsVisible: false,
-        chartHeroIsVisible: true
-      });
-    }
-  }
-
-  getAccountsByState() {
-    axios
-      .get("https://bottega-activity-tracker-api.herokuapp.com/locations", {
-        withCredentials: true
-      })
-      .then(response => {
-        const stateData = Object.keys(response.data).map(stateAbbreviation => {
-          return [stateAbbreviation, response.data[stateAbbreviation].length];
-        });
-
-        this.setState({ stateData });
-      })
-      .catch(error => {
-        console.log("get locations error", error);
-      });
+  handlePillClick(contentToShow) {
+    this.setState({ contentToShow });
   }
 
   getAccounts() {
@@ -68,7 +39,6 @@ export default class Dashboard extends Component {
 
   componentWillMount() {
     this.getAccounts();
-    this.getAccountsByState();
   }
 
   // TODO
@@ -77,6 +47,7 @@ export default class Dashboard extends Component {
   // And create all 300 max events and store in db.
   // Make sure to add some type of id from github and then create rake task that iterates through
   // each account daily and adds any new events.
+
   render() {
     if (this.state.isLoading) {
       return <div>Loading...</div>;
@@ -90,6 +61,16 @@ export default class Dashboard extends Component {
       });
     }
 
+    const contentRenderer = () => {
+      if (this.state.contentToShow === "CHART") {
+        return <div className="user-data-cards">{accountList}</div>;
+      } else if (this.state.contentToShow === "MAP") {
+        return <ChoroplethMap />;
+      } else {
+        return <div>Else...</div>;
+      }
+    };
+
     return (
       <div className="dashboard-wrapper">
         {accountList.length > 0 ? (
@@ -97,14 +78,14 @@ export default class Dashboard extends Component {
             <div className="content">
               <div className="pills">
                 <a onClick={() => this.handlePillClick("CHART")}>Chart</a>
+                <a onClick={() => this.handlePillClick("FEED")}>Feed</a>
                 <a onClick={() => this.handlePillClick("MAP")}>Map</a>
+                <a onClick={() => this.handlePillClick("NEW")}>
+                  Add New Account
+                </a>
               </div>
 
-              {this.state.chartHeroIsVisible ? (
-                <div className="user-data-cards">{accountList}</div>
-              ) : (
-                <ChoroplethMap data={this.state.stateData} />
-              )}
+              {contentRenderer()}
             </div>
           </div>
         ) : (
@@ -120,7 +101,6 @@ export default class Dashboard extends Component {
                   onReady: console.log
                 }}
                 style={{ width: "100%" }}
-                callback={console.log}
               />
 
               <div className="text">
