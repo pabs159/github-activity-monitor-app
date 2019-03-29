@@ -121,6 +121,15 @@ export default class Dashboard extends Component {
                   <NavLogo />
                 </div>
               </Link>
+
+              <div className="pills">
+                <a onClick={() => this.handlePillClick("CHART")}>Chart</a>
+                <a onClick={() => this.handlePillClick("FEED")}>Feed</a>
+                <a onClick={() => this.handlePillClick("MAP")}>Map</a>
+                <a onClick={() => this.handlePillClick("NEW")}>
+                  Add New Account
+                </a>
+              </div>
             </div>
 
             <div className="right-column">
@@ -133,18 +142,7 @@ export default class Dashboard extends Component {
         <div className="dashboard-wrapper">
           {accountList.length > 0 ? (
             <div className="container">
-              <div className="content">
-                <div className="pills">
-                  <a onClick={() => this.handlePillClick("CHART")}>Chart</a>
-                  <a onClick={() => this.handlePillClick("FEED")}>Feed</a>
-                  <a onClick={() => this.handlePillClick("MAP")}>Map</a>
-                  <a onClick={() => this.handlePillClick("NEW")}>
-                    Add New Account
-                  </a>
-                </div>
-
-                {contentRenderer()}
-              </div>
+              <div className="content">{contentRenderer()}</div>
             </div>
           ) : (
             <div className="empty-dashboard-wrapper">
