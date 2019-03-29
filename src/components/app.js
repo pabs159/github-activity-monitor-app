@@ -127,6 +127,7 @@ class App extends Component {
             {...props}
             populateAccounts={this.populateAccounts}
             accountsFollowed={this.state.accountsFollowed}
+            handleAccountAddition={this.handleAccountAddition}
           />
         )}
       />,
@@ -144,7 +145,6 @@ class App extends Component {
       return (
         <DashboardNavigation
           currentUser={this.state.user}
-          handleAccountAddition={this.handleAccountAddition}
           handleLogout={this.handleLogout}
         />
       );

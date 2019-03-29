@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 
 import NavLogo from "../svgs/NavLogo";
-import NewAccountModal from "../modals/NewAccountModal";
 
 class DashboardNavigation extends Component {
   constructor(props) {
@@ -65,25 +64,12 @@ class DashboardNavigation extends Component {
   render() {
     return (
       <div className="corporate-navigation-wrapper">
-        <NewAccountModal
-          modalIsOpen={this.state.modalIsOpen}
-          handleModalClose={this.handleModalClose}
-          handleSuccessfulAccountAddition={this.handleSuccessfulAccountAddition}
-        />
-
         <div className="left-column">
           <Link to="/">
             <div className="brand">
               <NavLogo />
             </div>
           </Link>
-
-          <div className="nav-link-wrapper">
-            <a onClick={this.handleNewAccountClick}>
-              <FontAwesomeIcon icon="plus-square" />
-              <div className="text">Track New User</div>
-            </a>
-          </div>
         </div>
 
         <div className="right-column">

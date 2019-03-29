@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import ReactModal from "react-modal";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Select from "react-select";
 
-ReactModal.setAppElement(".app-wrapper");
-
-export default class NewAccountModal extends Component {
+export default class NewAccount extends Component {
   constructor(props) {
     super(props);
 
@@ -117,7 +114,7 @@ export default class NewAccountModal extends Component {
           error: ""
         });
 
-        this.props.handleSuccessfulAccountAddition(response.data.account);
+        this.props.handleSuccessfulNewAccountCreation(response.data.account);
       })
       .catch(error => {
         console.log("in handle submit error for new account", error);
@@ -131,93 +128,50 @@ export default class NewAccountModal extends Component {
   }
 
   render() {
-    const customStyles = {
-      control: base => ({
-        ...base,
-        minHeight: 30
-      }),
-      menuList: base => ({
-        ...base,
-        maxHeight: 100
-      }),
-      dropdownIndicator: base => ({
-        ...base,
-        padding: 4
-      }),
-      clearIndicator: base => ({
-        ...base,
-        padding: 4
-      }),
-      multiValue: base => ({
-        ...base,
-        backgroundColor: variables.colorPrimaryLighter
-      }),
-      valueContainer: base => ({
-        ...base,
-        padding: "0px 6px"
-      }),
-      input: base => ({
-        ...base,
-        margin: 0,
-        padding: 0
-      })
-    };
-
     return (
-      <ReactModal
-        isOpen={this.props.modalIsOpen}
-        onRequestClose={() => {
-          this.props.handleModalClose();
-        }}
-        style={this.customStyles}
-      >
-        <form onSubmit={this.handleSubmit} className="form-wrapper">
-          {this.state.error ? (
-            <div className="form-error">
-              <FontAwesomeIcon icon="exclamation-circle" />
-              {this.state.error}
-            </div>
-          ) : null}
-          <div className="form-group">
-            <div className="icon-wrapper">
-              <FontAwesomeIcon icon="at" />
-            </div>
-            <input
-              className="new-account-username-field"
-              type="text"
-              name="login"
-              placeholder="Github username"
-              value={this.state.login}
-              onChange={this.handleChange}
-              required
+      <form onSubmit={this.handleSubmit} className="form-wrapper">
+        {this.state.error ? (
+          <div className="form-error">
+            <FontAwesomeIcon icon="exclamation-circle" />
+            {this.state.error}
+          </div>
+        ) : null}
+        <div className="form-group">
+          <div className="icon-wrapper">
+            <FontAwesomeIcon icon="at" />
+          </div>
+          <input
+            className="new-account-username-field"
+            type="text"
+            name="login"
+            placeholder="Github username"
+            value={this.state.login}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+
+        <div className="address-form-wrapper">
+          <div className="icon-wrapper">
+            <FontAwesomeIcon icon="location-arrow" />
+          </div>
+
+          <div className="select-element">
+            <Select
+              value={this.state.selectedState}
+              onChange={this.handleStateSelection}
+              options={this.state.stateList}
+              styles={this.customStyles}
             />
           </div>
+        </div>
 
-          <div className="address-form-wrapper">
-            <div className="icon-wrapper">
-              <FontAwesomeIcon icon="location-arrow" />
-            </div>
-
-            <div className="select-element">
-              <Select
-                value={this.state.selectedState}
-                onChange={this.handleStateSelection}
-                options={this.state.stateList}
-                styles={customStyles}
-              />
-            </div>
-          </div>
-
-          <div className="login-btn-wrapper">
-            <button
-              className="primary-rounded-button button-small"
-              type="submit"
-            >
-              Start tracking
-            </button>
-          </div>
-        </form>
-      </ReactModal>
+        <div className="login-btn-wrapper">
+          <button className="primary-rounded-button button-small" type="submit">
+            Start tracking
+          </button>
+        </div>
+      </form>
     );
   }
 }

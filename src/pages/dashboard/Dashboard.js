@@ -5,6 +5,7 @@ import ReactVivus from "react-vivus";
 import githubLogo from "../../components/svgs/github-logo.svg";
 import UserDataCard from "../../components/cards/UserDataCard";
 import ChoroplethMap from "../../components/maps/ChoroplethMap";
+import NewAccount from "./NewAccount";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -16,6 +17,13 @@ export default class Dashboard extends Component {
     };
 
     this.handlePillClick = this.handlePillClick.bind(this);
+    this.handleSuccessfulNewAccountCreation = this.handleSuccessfulNewAccountCreation.bind(
+      this
+    );
+  }
+
+  handleSuccessfulNewAccountCreation(account) {
+    this.props.handleAccountAddition(account);
   }
 
   handlePillClick(contentToShow) {
@@ -66,6 +74,14 @@ export default class Dashboard extends Component {
         return <div className="user-data-cards">{accountList}</div>;
       } else if (this.state.contentToShow === "MAP") {
         return <ChoroplethMap />;
+      } else if (this.state.contentToShow === "NEW") {
+        return (
+          <NewAccount
+            handleSuccessfulNewAccountCreation={
+              this.handleSuccessfulNewAccountCreation
+            }
+          />
+        );
       } else {
         return <div>Else...</div>;
       }
