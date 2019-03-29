@@ -8,7 +8,7 @@ const hot1 = "#77312f";
 const hot2 = "#f33d15";
 const bg = "#28272c";
 
-const data = genBins(16, 16);
+const data = genBins(42, 16);
 
 const max = (data, value = d => d) => Math.max(...data.map(value));
 const min = (data, value = d => d) => Math.min(...data.map(value));
@@ -51,7 +51,7 @@ const AccountHeatMap = ({
     size = width - margin.left - margin.right - separation;
   }
 
-  const xMax = size / 2;
+  const xMax = size;
   const yMax = height - margin.bottom - margin.top;
 
   const binWidth = xMax / data.length;

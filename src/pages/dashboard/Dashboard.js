@@ -9,6 +9,8 @@ import UserDataCard from "../../components/cards/UserDataCard";
 import ChoroplethMap from "../../components/maps/ChoroplethMap";
 import NewAccount from "./NewAccount";
 import NavLogo from "../../components/svgs/NavLogo";
+import AccountDetail from "./AccountDetail";
+import AccountHeatMap from "../../components/charts/AccountHeatMap";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -95,7 +97,11 @@ export default class Dashboard extends Component {
 
     const contentRenderer = () => {
       if (this.state.contentToShow === "CHART") {
-        return <div>Charts...</div>;
+        return (
+          <div>
+            <AccountHeatMap width={1200} height={600} />
+          </div>
+        );
       } else if (this.state.contentToShow === "MAP") {
         return <ChoroplethMap />;
       } else if (this.state.contentToShow === "FEED") {
