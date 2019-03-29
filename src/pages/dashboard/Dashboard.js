@@ -16,22 +16,21 @@ export default class Dashboard extends Component {
       chartHeroIsVisible: true
     };
 
-    this.handleMapPillClick = this.handleMapPillClick.bind(this);
-    this.handleChartPillClick = this.handleChartPillClick.bind(this);
+    this.handlePillClick = this.handlePillClick.bind(this);
   }
 
-  handleChartPillClick() {
-    this.setState({
-      mapIsVisible: false,
-      chartHeroIsVisible: true
-    });
-  }
-
-  handleMapPillClick() {
-    this.setState({
-      mapIsVisible: true,
-      chartHeroIsVisible: false
-    });
+  handlePillClick(typeOfContentToShow) {
+    if (typeOfContentToShow === "MAP") {
+      this.setState({
+        mapIsVisible: true,
+        chartHeroIsVisible: false
+      });
+    } else {
+      this.setState({
+        mapIsVisible: false,
+        chartHeroIsVisible: true
+      });
+    }
   }
 
   getAccounts() {
@@ -78,8 +77,8 @@ export default class Dashboard extends Component {
           <div className="container">
             <div className="content">
               <div className="pills">
-                <a onClick={this.handleChartPillClick}>Chart</a>
-                <a onClick={this.handleMapPillClick}>Map</a>
+                <a onClick={() => this.handlePillClick("CHART")}>Chart</a>
+                <a onClick={() => this.handlePillClick("MAP")}>Map</a>
               </div>
 
               {this.state.chartHeroIsVisible ? (

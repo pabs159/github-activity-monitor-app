@@ -10,6 +10,7 @@
 
       .pills {
         height: 80px;
+        z-index: 1000;
         a {
           cursor: pointer;
           margin: 15px;
