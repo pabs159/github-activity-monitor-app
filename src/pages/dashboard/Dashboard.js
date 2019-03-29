@@ -95,9 +95,11 @@ export default class Dashboard extends Component {
 
     const contentRenderer = () => {
       if (this.state.contentToShow === "CHART") {
-        return <div className="user-data-cards">{accountList}</div>;
+        return <div>Charts...</div>;
       } else if (this.state.contentToShow === "MAP") {
         return <ChoroplethMap />;
+      } else if (this.state.contentToShow === "FEED") {
+        return <div className="user-data-cards">{accountList}</div>;
       } else if (this.state.contentToShow === "NEW") {
         return (
           <NewAccount
@@ -116,11 +118,11 @@ export default class Dashboard extends Component {
         <div className="corporate-layout-wrapper">
           <div className="corporate-navigation-wrapper">
             <div className="left-column">
-              <Link to="/">
+              <a onClick={() => this.handlePillClick("CHART")}>
                 <div className="brand">
                   <NavLogo />
                 </div>
-              </Link>
+              </a>
 
               <div className="pills">
                 <a onClick={() => this.handlePillClick("CHART")}>Chart</a>

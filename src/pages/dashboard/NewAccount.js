@@ -111,7 +111,8 @@ export default class NewAccount extends Component {
         this.setState({
           login: "",
           state: "",
-          error: ""
+          error: "",
+          selectedState: {}
         });
 
         this.props.handleSuccessfulNewAccountCreation(response.data.account);
