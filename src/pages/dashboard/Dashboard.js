@@ -54,7 +54,6 @@ export default class Dashboard extends Component {
   }
 
   handlePillClick(contentToShow) {
-    console.log("clicked", contentToShow);
     this.setState({ contentToShow });
   }
 
@@ -76,33 +75,18 @@ export default class Dashboard extends Component {
         { withCredentials: true }
       )
       .then(response => {
-        const groupedEventKeys = Object.keys(response.data.events);
+        const groupedAccountKeys = Object.keys(response.data.events);
 
-        // const eventData = groupedEventKeys.map((date, idx) => {
-        //   let groupedByAccount = _(response.data.events[date])
-        //     .groupBy(el => el.account_id)
-        //     .map((value, key) => ({
-        //       bin: idx,
-        //       bins: _.countBy(value, el => el.account_id)
-        //     }))
-        //     .value();
-
-        //   return groupedByAccount;
-        // });
-
-        const eventData = groupedEventKeys.map((date, idx) => {
-          // var d1 = groupedEventKeys;
-          // var d2 = response.data.events;
-
-          const binsData = _(response.data.events[date])
-            .groupBy(el => el.account_id)
-            .map((date, id) => {
-              return {
-                bin: id,
-                count: Object.values(_.countBy(date, "date"))[0]
-              };
-            })
-            .value();
+        const eventData = groupedAccountKeys.map((account, idx) => {
+          const datesPerAccount = Object.keys(response.data.events[account]);
+          const binsData = datesPerAccount.map((date, nestedIdx) => {
+            return {
+              bin: nestedIdx,
+              count: response.data.events[account][date].length * 15,
+              date: date,
+              login: response.data.events[account][date][0].username
+            };
+          });
 
           return {
             bin: idx,

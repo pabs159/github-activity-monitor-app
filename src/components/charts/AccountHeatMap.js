@@ -8,9 +8,9 @@ const hot1 = "#77312f";
 const hot2 = "#f33d15";
 const bg = "#28272c";
 
-// const data = genBins(10, 4);
+const data = genBins(10, 4);
 
-const data = [
+const xdata = [
   {
     bin: 0,
     bins: [
