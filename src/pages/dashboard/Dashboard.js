@@ -54,6 +54,7 @@ export default class Dashboard extends Component {
   }
 
   handlePillClick(contentToShow) {
+    console.log("clicked", contentToShow);
     this.setState({ contentToShow });
   }
 
@@ -207,11 +208,7 @@ export default class Dashboard extends Component {
           </div>
         </div>
         <div className="dashboard-wrapper">
-          {accountList.length > 0 ? (
-            <div className="container">
-              <div className="content">{contentRenderer()}</div>
-            </div>
-          ) : (
+          {this.state.contentToShow !== "NEW" && accountList.length === 0 ? (
             <div className="empty-dashboard-wrapper">
               <div className="content">
                 <ReactVivus
@@ -230,6 +227,10 @@ export default class Dashboard extends Component {
                   You're not following any GitHub users, add your first account
                 </div>
               </div>
+            </div>
+          ) : (
+            <div className="container">
+              <div className="content">{contentRenderer()}</div>
             </div>
           )}
         </div>
