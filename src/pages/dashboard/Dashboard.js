@@ -9,7 +9,6 @@ import UserDataCard from "../../components/cards/UserDataCard";
 import ChoroplethMap from "../../components/maps/ChoroplethMap";
 import NewAccount from "./NewAccount";
 import NavLogo from "../../components/svgs/NavLogo";
-import AccountDetail from "./AccountDetail";
 import AccountHeatMap from "../../components/charts/AccountHeatMap";
 
 export default class Dashboard extends Component {
@@ -18,7 +17,8 @@ export default class Dashboard extends Component {
 
     this.state = {
       isLoading: true,
-      contentToShow: "CHART"
+      contentToShow: "CHART",
+      groupedEvents: []
     };
 
     this.handlePillClick = this.handlePillClick.bind(this);
@@ -63,16 +63,48 @@ export default class Dashboard extends Component {
       })
       .then(response => {
         this.props.populateAccounts(response.data.accounts);
-
-        this.setState({
-          isLoading: false
-        });
       })
       .catch(error => console.log("getAccounts error", error));
   }
 
+  getGroupedEvents() {
+    axios
+      .get(
+        "https://bottega-activity-tracker-api.herokuapp.com/grouped_events",
+        { withCredentials: true }
+      )
+      .then(response => {
+        const groupedEventKeys = Object.keys(response.data.events);
+        let eventData = [];
+
+        groupedEventKeys.forEach((date, idx) => {
+          console.log(response.data.events[date]);
+          debugger;
+          return {
+            bin: event.account_id,
+            count: Math.floor(Math.random() * 6) + 1
+          };
+        });
+
+        const groupedEvents = groupedEventKeys.map((groupedEvent, idx) => {
+          return {
+            bin: idx
+          };
+        });
+
+        this.setState({
+          isLoading: false,
+          groupedEvents: groupedEvents
+        });
+      })
+      .catch(error => {
+        console.log("getGroupedEvents error", error);
+      });
+  }
+
   componentWillMount() {
     this.getAccounts();
+    this.getGroupedEvents();
   }
 
   // TODO
