@@ -75,34 +75,9 @@ export default class Dashboard extends Component {
         { withCredentials: true }
       )
       .then(response => {
-        const groupedAccountKeys = Object.keys(response.data.events);
-
-        const eventData = groupedAccountKeys.map((account, idx) => {
-          const datesPerAccount = Object.keys(response.data.events[account]);
-          const binsData = datesPerAccount.map((date, nestedIdx) => {
-            return {
-              bin: nestedIdx,
-              count: response.data.events[account][date].length * 15,
-              date: date,
-              login: response.data.events[account][date][0].username
-            };
-          });
-
-          return {
-            bin: idx,
-            bins: binsData
-          };
-        });
-
-        // const groupedEvents = groupedEventKeys.map((groupedEvent, idx) => {
-        //   return {
-        //     bin: idx
-        //   };
-        // });
-
         this.setState({
           isLoading: false,
-          groupedEvents: eventData
+          groupedEvents: response.data.events
         });
       })
       .catch(error => {
