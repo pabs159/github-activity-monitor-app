@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactVivus from "react-vivus";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import _ from "lodash";
 
 import githubLogo from "../../components/svgs/github-logo.svg";
 import UserDataCard from "../../components/cards/UserDataCard";
@@ -75,26 +76,48 @@ export default class Dashboard extends Component {
       )
       .then(response => {
         const groupedEventKeys = Object.keys(response.data.events);
-        let eventData = [];
 
-        groupedEventKeys.forEach((date, idx) => {
-          console.log(response.data.events[date]);
-          debugger;
+        // const eventData = groupedEventKeys.map((date, idx) => {
+        //   let groupedByAccount = _(response.data.events[date])
+        //     .groupBy(el => el.account_id)
+        //     .map((value, key) => ({
+        //       bin: idx,
+        //       bins: _.countBy(value, el => el.account_id)
+        //     }))
+        //     .value();
+
+        //   return groupedByAccount;
+        // });
+
+        const eventData = groupedEventKeys.map((date, idx) => {
+          // var d1 = groupedEventKeys;
+          // var d2 = response.data.events;
+
+          const binsData = _(response.data.events[date])
+            .groupBy(el => el.account_id)
+            .map((date, id) => {
+              return {
+                bin: id,
+                count: Object.values(_.countBy(date, "date"))[0]
+              };
+            })
+            .value();
+
           return {
-            bin: event.account_id,
-            count: Math.floor(Math.random() * 6) + 1
+            bin: idx,
+            bins: binsData
           };
         });
 
-        const groupedEvents = groupedEventKeys.map((groupedEvent, idx) => {
-          return {
-            bin: idx
-          };
-        });
+        // const groupedEvents = groupedEventKeys.map((groupedEvent, idx) => {
+        //   return {
+        //     bin: idx
+        //   };
+        // });
 
         this.setState({
           isLoading: false,
-          groupedEvents: groupedEvents
+          groupedEvents: eventData
         });
       })
       .catch(error => {
@@ -131,7 +154,11 @@ export default class Dashboard extends Component {
       if (this.state.contentToShow === "CHART") {
         return (
           <div>
-            <AccountHeatMap width={1200} height={600} />
+            <AccountHeatMap
+              data={this.state.groupedEvents}
+              width={1200}
+              height={600}
+            />
           </div>
         );
       } else if (this.state.contentToShow === "MAP") {
